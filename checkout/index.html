@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameHub | Your Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Game <span>Hub</span></div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+      </ul>
+
+      <div class="nav-cart"><a href="index.html">Cart (0)</a></div>
+    </nav>
+
+    <div class="cart-container">
+      <section class="cart-items">
+        <h1>Your Shopping Cart</h1>
+
+        <div class="cart-row">
+          <div class="cart-item-info">
+            <div class="item-img placeholder">
+              <div>
+                <h3>The Long Night</h3>
+                <p>Digital Edition</p>
+              </div>
+            </div>
+            <div class="cart-item-price">$59.99</div>
+            <button class="remove-btn">Remove</button>
+          </div>
+
+          <div class="cart-item-info">
+            <div class="item-img placeholder">
+              <div>
+                <h3>Cyber Quest</h3>
+                <p>Standard Edition</p>
+              </div>
+            </div>
+            <div class="cart-item-price">$49.99</div>
+            <button class="remove-btn">Remove</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="checkout-summary">
+        <h2>Order Summary</h2>
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span>$109.98</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Tax (10%)</span>
+          <span>$10.99</span>
+        </div>
+        <hr />
+        <div class="summary-line total">
+          <span>Total</span>
+          <span>$120.97</span>
+        </div>
+        <button
+          class="checkout-btn"
+          onclick="location.href = 'confirmation/index.html'"
+        >
+          Proceed to Checkout
+        </button>
+        <a href="../games.html" class="continue-shopping">Continue Shopping</a>
+      </aside>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 GameHub. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
