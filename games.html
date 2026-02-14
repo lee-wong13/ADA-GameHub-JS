@@ -24,7 +24,8 @@
 
         <div class="filter-group">
           <label>Genre</label>
-          <select>
+          <select id="genre-filter">
+            <option value="">All</option>
             <option value="action">Action</option>
             <option value="adventure">Adventure</option>
             <option value="rpg">RPG</option>
@@ -35,7 +36,8 @@
 
         <div class="filter-group">
           <label>Release Date</label>
-          <select>
+          <select id="release-filter">
+            <option value="">All</option>
             <option value="2005">2005</option>
             <option value="2006">2006</option>
             <option value="2007">2007</option>
@@ -49,7 +51,8 @@
 
         <div class="filter-group">
           <label>Age Rating</label>
-          <select>
+          <select id="age-filter">
+            <option value="">All</option>
             <option value="3+">3+</option>
             <option value="7+">7+</option>
             <option value="12+">12+</option>
@@ -60,18 +63,52 @@
 
         <div class="filter-group">
           <label>Price Range</label>
-          <select>
+          <select id="price-filter">
+            <option value="">All</option>
             <option value="0-20">$0 - $20</option>
             <option value="20-50">$20 - $50</option>
             <option value="50-100">$50 - $100</option>
             <option value="100+">$100+</option>
           </select>
         </div>
-        <button class="filter-btn">Apply Filters</button>
+        <button class="filter-btn" id="apply-filters-btn">Apply Filters</button>
       </aside>
 
       <main class="game-display">
         <div class="game-grid" id="games-container"></div>
+
+        <!--
+        <div class="game-grid">
+          <div class="game-card">
+            <div class="game-img"></div>
+            <div class="game-info">
+              <h3>The Long Night</h3>
+              <p>$59.99</p>
+              <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+
+          <div class="game-card">
+            <div class="game-img"></div>
+            <div class="game-info">
+              <h3>Cyber Quest</h3>
+              <p>$49.99</p>
+              <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+
+          <div class="game-card">
+            <div class="game-img"></div>
+            <div class="game-info">
+              <h3>Pixel Heroes</h3>
+              <p>$39.99</p>
+              <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+
+          More game cards can be added here
+        </div>
+        -->
       </main>
     </div>
   </body>

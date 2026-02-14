@@ -10,7 +10,7 @@ async function fetchGames() {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error("HTTP error! status: " + response.status);
     }
 
     const result = await response.json();
@@ -26,7 +26,7 @@ function displayGames(games) {
 
   gamesContainer.innerHTML = ""; // Clear previous content
 
-  games.forEach((game) => {
+  games.forEach(function (game) {
     let imageUrl = fallbackImage;
 
     if (game.image && typeof game.image === "object" && game.image.url) {
@@ -40,7 +40,8 @@ function displayGames(games) {
 
     const gameImage = document.createElement("div");
     gameImage.classList.add("game-img");
-    gameImage.style.background = `center / cover no-repeat url('${imageUrl}')`;
+    gameImage.style.background =
+      "center / cover no-repeat url('" + imageUrl + "')";
 
     const gameInfo = document.createElement("div");
     gameInfo.classList.add("game-info");
@@ -49,7 +50,11 @@ function displayGames(games) {
     title.textContent = game.title || "Untitled Game";
 
     const price = document.createElement("p");
-    price.textContent = `$${game.price ?? "0.00"}`;
+    let gamePriceText = game.price;
+    if (gamePriceText === null || gamePriceText === undefined) {
+      gamePriceText = "0.00";
+    }
+    price.textContent = "$" + gamePriceText;
 
     const buyButton = document.createElement("button");
     buyButton.classList.add("buy-btn");
@@ -65,6 +70,73 @@ function displayGames(games) {
   });
 }
 
-fetchGames().then(() => {
+// Filter functions
+function isWithinPriceRange(price, rangeValue) {
+  if (!rangeValue) return true;
+
+  if (rangeValue === "100+") {
+    return price >= 100;
+  }
+
+  const rangeParts = rangeValue.split("-");
+  const minPrice = Number(rangeParts[0]);
+  const maxPrice = Number(rangeParts[1]);
+
+  return price >= minPrice && price <= maxPrice;
+}
+
+function applyFilters() {
+  const genreSelect = document.getElementById("genre-filter");
+  const releaseSelect = document.getElementById("release-filter");
+  const ageSelect = document.getElementById("age-filter");
+  const priceSelect = document.getElementById("price-filter");
+
+  if (!genreSelect || !releaseSelect || !ageSelect || !priceSelect) {
+    displayGames(AllGames);
+    return;
+  }
+
+  const selectedGenre = genreSelect.value.toLowerCase();
+  const selectedRelease = releaseSelect.value;
+  const selectedAge = ageSelect.value;
+  const selectedPrice = priceSelect.value;
+
+  const filteredGames = AllGames.filter(function (game) {
+    const gameGenre = game.genre ? game.genre.toLowerCase() : "";
+    const gameRelease = game.released ? String(game.released) : "";
+    const gameAge = game.ageRating ? String(game.ageRating) : "";
+    const gamePrice = Number(game.price || 0);
+
+    if (selectedGenre !== "" && gameGenre !== selectedGenre) {
+      return false;
+    }
+
+    if (selectedRelease !== "" && gameRelease !== selectedRelease) {
+      return false;
+    }
+
+    if (selectedAge !== "" && gameAge !== selectedAge) {
+      return false;
+    }
+
+    if (!isWithinPriceRange(gamePrice, selectedPrice)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  displayGames(filteredGames);
+}
+
+function setupFilters() {
+  const filterButton = document.getElementById("apply-filters-btn");
+  if (!filterButton) return;
+
+  filterButton.addEventListener("click", applyFilters);
+}
+
+fetchGames().then(function () {
   displayGames(AllGames);
+  setupFilters();
 });
