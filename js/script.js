@@ -15,6 +15,10 @@ async function fetchGames() {
 
     const result = await response.json();
     AllGames = result.data || [];
+    // const sportsGames = result.data.filter(game => game.genre === "Sports")
+
+    displayGames(AllGames);
+    setupFilters();
   } catch (error) {
     console.error("Error fetching games:", error);
   }
@@ -26,117 +30,85 @@ function displayGames(games) {
 
   gamesContainer.innerHTML = ""; // Clear previous content
 
-  games.forEach(function (game) {
-    let imageUrl = fallbackImage;
-
-    if (game.image && typeof game.image === "object" && game.image.url) {
-      imageUrl = game.image.url;
-    } else if (game.image && typeof game.image === "string") {
-      imageUrl = game.image;
-    }
-
-    const gameCard = document.createElement("div");
-    gameCard.classList.add("game-card");
-
-    const gameImage = document.createElement("div");
-    gameImage.classList.add("game-img");
-    gameImage.style.background =
-      "center / cover no-repeat url('" + imageUrl + "')";
-
-    const gameInfo = document.createElement("div");
-    gameInfo.classList.add("game-info");
-
-    const title = document.createElement("h3");
-    title.textContent = game.title || "Untitled Game";
-
-    const price = document.createElement("p");
-    let gamePriceText = game.price;
-    if (gamePriceText === null || gamePriceText === undefined) {
-      gamePriceText = "0.00";
-    }
-    price.textContent = "$" + gamePriceText;
-
-    const buyButton = document.createElement("button");
-    buyButton.classList.add("buy-btn");
-    buyButton.textContent = "Buy Now";
-
-    gameInfo.appendChild(title);
-    gameInfo.appendChild(price);
-    gameInfo.appendChild(buyButton);
-
-    gameCard.appendChild(gameImage);
-    gameCard.appendChild(gameInfo);
-    gamesContainer.appendChild(gameCard);
+  games.forEach((games) => {
+    const html = `
+      <div class"game-card">
+        <a href="/product/index.html?id=${games.id}">
+          <div class="game-img" style=" background: url(${games.image.url}) center center / cover no-repeat; " ></div>
+        </a>
+        <div class="game-info">
+          <h3>${games.title}</h3>
+          <p>$ ${games.price}</p>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+    `;
+    gamesContainer.insertAdjacentHTML("beforeend", html);
   });
 }
 
 // Filter functions
-function isWithinPriceRange(price, rangeValue) {
-  if (!rangeValue) return true;
 
-  if (rangeValue === "100+") {
-    return price >= 100;
-  }
+function setupFilters() {
+  console.log("welcome to setupFilters");
 
-  const rangeParts = rangeValue.split("-");
-  const minPrice = Number(rangeParts[0]);
-  const maxPrice = Number(rangeParts[1]);
-
-  return price >= minPrice && price <= maxPrice;
-}
-
-function applyFilters() {
+  // อ้างตำแหน่ง select แต่ละตัว
   const genreSelect = document.getElementById("genre-filter");
   const releaseSelect = document.getElementById("release-filter");
   const ageSelect = document.getElementById("age-filter");
   const priceSelect = document.getElementById("price-filter");
 
-  if (!genreSelect || !releaseSelect || !ageSelect || !priceSelect) {
-    displayGames(AllGames);
-    return;
+  // ปุ่ม Apply Filters
+  const filterButton = document.getElementById("apply-filters-btn");
+
+  // ฟังก์ชันตรวจสอบช่วงราคา
+  function priceRange(price, rangeValue) {
+    if (!rangeValue) return true;
+
+    if (rangeValue === "100+") {
+      return price >= 100;
+    }
+
+    const [min, max] = rangeValue.split("-");
+    return price >= Number(min) && price <= Number(max);
   }
 
-  const selectedGenre = genreSelect.value.toLowerCase();
-  const selectedRelease = releaseSelect.value;
-  const selectedAge = ageSelect.value;
-  const selectedPrice = priceSelect.value;
+  // ฟังก์ชันกรองเกม
+  function applyFilters() {
+    const selectedGenre = genreSelect.value;
+    const selectedRelease = releaseSelect.value;
+    const selectedAge = ageSelect.value;
+    const selectedPrice = priceSelect.value;
 
-  const filteredGames = AllGames.filter(function (game) {
-    const gameGenre = game.genre ? game.genre.toLowerCase() : "";
-    const gameRelease = game.released ? String(game.released) : "";
-    const gameAge = game.ageRating ? String(game.ageRating) : "";
-    const gamePrice = Number(game.price || 0);
+    // กรองจาก array ของเกม (สมมติว่ามีตัวแปร gamesData.data)
+    const filteredGames = AllGames.filter((game) => {
+      // Genre
+      if (selectedGenre !== "" && game.genre !== selectedGenre) {
+        return false;
+      }
+      // Release
+      if (selectedRelease !== "" && game.released !== selectedRelease) {
+        return false;
+      }
 
-    if (selectedGenre !== "" && gameGenre !== selectedGenre) {
-      return false;
-    }
+      if (selectedAge !== "" && game.ageRating !== selectedAge) {
+        return false;
+      }
+      // Price
+      if (!priceRange(game.price, selectedPrice)) {
+        return false;
+      }
 
-    if (selectedRelease !== "" && gameRelease !== selectedRelease) {
-      return false;
-    }
+      return true;
+    });
 
-    if (selectedAge !== "" && gameAge !== selectedAge) {
-      return false;
-    }
+    // แสดงผล
+    displayGames(filteredGames);
+  }
 
-    if (!isWithinPriceRange(gamePrice, selectedPrice)) {
-      return false;
-    }
-
-    return true;
-  });
-
-  displayGames(filteredGames);
-}
-
-function setupFilters() {
-  const filterButton = document.getElementById("apply-filters-btn");
-  if (!filterButton) return;
-
+  // เมื่อกดปุ่ม Apply Filters → เรียก applyFilters
   filterButton.addEventListener("click", applyFilters);
 }
+fetchGames();
 
-fetchGames().then(function () {
-  displayGames(AllGames);
-  setupFilters();
-});
+//Comments are for learning purposes only, and will be removed in the final version.

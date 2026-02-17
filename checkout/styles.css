@@ -121,6 +121,20 @@ body {
   color: #333;
 }
 
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+}
+
 .remove-btn {
   background-color: #ff6347;
   color: #fff;

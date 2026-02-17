@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games - GameHub</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/cart.js"></script>
     <script type="module" src="js/script.js"></script>
   </head>
   <body>
@@ -26,11 +27,11 @@
           <label>Genre</label>
           <select id="genre-filter">
             <option value="">All</option>
-            <option value="action">Action</option>
-            <option value="adventure">Adventure</option>
-            <option value="rpg">RPG</option>
-            <option value="strategy">Strategy</option>
-            <option value="sport">Sport</option>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Horror">Horror</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Sports">Sport</option>
           </select>
         </div>
 
@@ -75,40 +76,9 @@
       </aside>
 
       <main class="game-display">
-        <div class="game-grid" id="games-container"></div>
+        <div class="game-grid" id="games-container">
 
-        <!--
-        <div class="game-grid">
-          <div class="game-card">
-            <div class="game-img"></div>
-            <div class="game-info">
-              <h3>The Long Night</h3>
-              <p>$59.99</p>
-              <button class="buy-btn">Buy Now</button>
-            </div>
-          </div>
-
-          <div class="game-card">
-            <div class="game-img"></div>
-            <div class="game-info">
-              <h3>Cyber Quest</h3>
-              <p>$49.99</p>
-              <button class="buy-btn">Buy Now</button>
-            </div>
-          </div>
-
-          <div class="game-card">
-            <div class="game-img"></div>
-            <div class="game-info">
-              <h3>Pixel Heroes</h3>
-              <p>$39.99</p>
-              <button class="buy-btn">Buy Now</button>
-            </div>
-          </div>
-
-          More game cards can be added here
         </div>
-        -->
       </main>
     </div>
   </body>
