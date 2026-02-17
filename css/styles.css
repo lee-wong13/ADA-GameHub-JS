@@ -291,27 +291,3 @@ footer {
   color: #28a745;
   font-weight: bold;
 }
-
-@media (max-width: 900px) {
-  #game-detail .game-details-layout {
-    flex-direction: column;
-  }
-
-  #game-detail .main-image img {
-    max-height: 420px;
-  }
-}
-
-@media (max-width: 600px) {
-  #game-detail .game-container {
-    padding: 1.5rem 1rem;
-  }
-
-  #game-detail .game-details-layout {
-    padding: 1rem;
-  }
-
-  #game-detail .game-details h1 {
-    font-size: 1.6rem;
-  }
-}
