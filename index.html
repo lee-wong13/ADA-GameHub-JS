@@ -6,9 +6,8 @@
     <title>GameHub - Home</title>
 
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="module" src="js/cart.js"></script>
-    <script type="module" src="js/script.js"></script>
   </head>
+
   <body>
     <nav class="navbar">
       <div class="logo">Game <span>Hub</span></div>
@@ -17,7 +16,11 @@
         <li><a href="games.html">Games</a></li>
       </ul>
 
-      <div class="nav-cart"><a href="checkout/index.html">Cart (0)</a></div>
+      <div class="nav-cart">
+        <a href="../checkout/index.html">
+          Cart (<span id="cart-count">0</span>)
+        </a>
+      </div>
     </nav>
 
     <header class="hero">
@@ -27,41 +30,12 @@
 
     <main class="container">
       <section class="game-grid" id="games-container"></section>
-
-      <!--
-      <section class="game-grid">
-        <div class="game-card">
-          <div class="game-img"></div>
-          <div class="game-info">
-            <h3>The Long Night</h3>
-            <p>$59.99</p>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="game-img"></div>
-          <div class="game-info">
-            <h3>Cyber Quest</h3>
-            <p>$49.99</p>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="game-img"></div>
-          <div class="game-info">
-            <h3>Pixel Heroes</h3>
-            <p>$39.99</p>
-            <button class="buy-btn">Buy Now</button>
-          </div>
-        </div>
-      </section>
-      -->
     </main>
 
     <footer>
       <p>&copy; 2024 GameHub. All rights reserved.</p>
     </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>

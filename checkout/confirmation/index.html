@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameHub | Order Confirmation</title>
     <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="/js/cart.js"></script>
   </head>
+
   <body>
     <nav class="navbar">
       <div class="logo">Game <span>Hub</span></div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="games.html">Games</a></li>
+        <li><a href="../../games.html">Home</a></li>
+        <li><a href="../../games.html">Games</a></li>
       </ul>
 
-      <div class="nav-cart"><a href="checkout/index.html">Cart (0)</a></div>
+      <div class="nav-cart">
+        <a href="../../checkout/index.html">
+          Cart (<span id="cart-cout">0</span>)
+        </a>
+      </div>
     </nav>
 
     <main class="confirm-wrapper">
@@ -28,7 +34,7 @@
 
         <div class="order-details">
           <span>Order Number:</span>
-          <strong>#123456</strong>
+          <strong id="ran-num">#123456</strong>
         </div>
 
         <p class="slow-burn-note">"The best adventures are worth the wait."</p>
@@ -39,5 +45,14 @@
         </div>
       </div>
     </main>
+    <script>
+      localStorage.removeItem("cart");
+
+      const random = document.getElementById("ran-num");
+      random.innerHTML = String(Math.floor(Math.random() * 1000000)).padStart(
+        6,
+        "0",
+      );
+    </script>
   </body>
 </html>

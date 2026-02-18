@@ -4,6 +4,8 @@ const detailContainer = document.getElementById("game-detail");
 
 //Functions
 async function fetchGames() {
+  updateCartCount();
+
   const url = "https://v2.api.noroff.dev/gamehub";
 
   const params = new URLSearchParams(window.location.search);
@@ -43,13 +45,36 @@ function renderProductDetails(game) {
 
           <p class="description">${game.description}</p>
 
-          <button class="add-to-cart-btn">Add to Cart</button>
+          <button class="add-to-cart-btn" id="add-btn">Add to Cart</button>
           <p class="stock-status">In Stock</p>
         </div>
       </div>
     </div>
-    
   `;
+
+  document
+    .getElementById("add-btn")
+    .addEventListener("click", () => addToCart(game));
+}
+
+function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existing = cart.find((item) => item.id === product.id);
+  if (!existing) {
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+    updateCartCount();
+  } else {
+    alert("Item is already in cart");
+  }
+}
+
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const countElement = document.getElementById("cart-count");
+  if (countElement) countElement.innerText = cart.length;
 }
 
 fetchGames();

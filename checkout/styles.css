@@ -93,9 +93,9 @@ body {
   color: #333;
 }
 
-.cart-row {
+.cart-col {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 20px;
   margin-bottom: 15px;
   padding-bottom: 15px;
@@ -106,14 +106,36 @@ body {
 .cart-item-info {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
 }
 
-.item-img-placeholder {
+.item-img {
+  display: flex;
+  gap: 14px;
+  flex-basis: 50%;
+}
+
+.item-img img {
   width: 60px;
-  height: 60px;
+  height: 80px;
   background-color: #ccc;
   border-radius: 4px;
+  aspect-ratio: 4/3;
+}
+
+.cart-title-detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item-price-del {
+  display: flex;
+  gap: 1rem;
+  /* flex-basis: 20%; */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cart-item-price {

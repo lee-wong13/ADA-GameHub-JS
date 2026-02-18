@@ -1,85 +1,92 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Games - GameHub</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script type="module" src="js/cart.js"></script>
-    <script type="module" src="js/script.js"></script>
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="logo">Game <span>Hub</span></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="games.html">Games</a></li>
-      </ul>
 
-      <div class="nav-cart"><a href="checkout/index.html">Cart (0)</a></div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games - GameHub</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="js/cart.js"></script>
+  <script type="module" src="js/script.js"></script>
+</head>
 
-    <div class="game-layout">
-      <aside class="sidebar">
-        <h2>Filters</h2>
+<body>
+  <nav class="navbar">
+    <div class="logo">Game <span>Hub</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+    </ul>
 
-        <div class="filter-group">
-          <label>Genre</label>
-          <select id="genre-filter">
-            <option value="">All</option>
-            <option value="Action">Action</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Horror">Horror</option>
-            <option value="Strategy">Strategy</option>
-            <option value="Sports">Sport</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label>Release Date</label>
-          <select id="release-filter">
-            <option value="">All</option>
-            <option value="2005">2005</option>
-            <option value="2006">2006</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2009">2009</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label>Age Rating</label>
-          <select id="age-filter">
-            <option value="">All</option>
-            <option value="3+">3+</option>
-            <option value="7+">7+</option>
-            <option value="12+">12+</option>
-            <option value="15+">15+</option>
-            <option value="18+">18+</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label>Price Range</label>
-          <select id="price-filter">
-            <option value="">All</option>
-            <option value="0-20">$0 - $20</option>
-            <option value="20-50">$20 - $50</option>
-            <option value="50-100">$50 - $100</option>
-            <option value="100+">$100+</option>
-          </select>
-        </div>
-        <button class="filter-btn" id="apply-filters-btn">Apply Filters</button>
-      </aside>
-
-      <main class="game-display">
-        <div class="game-grid" id="games-container">
-
-        </div>
-      </main>
+    <div class="nav-cart">
+      <a href="../checkout/index.html">
+        Cart (<span id="cart-count">0</span>)
+      </a>
     </div>
-  </body>
+  </nav>
+
+  <div class="game-layout">
+    <aside class="sidebar">
+      <h2>Filters</h2>
+
+      <div class="filter-group">
+        <label>Genre</label>
+        <select id="genre-filter">
+          <option value="">All</option>
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Horror">Horror</option>
+          <option value="Strategy">Strategy</option>
+          <option value="Sports">Sport</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Release Date</label>
+        <select id="release-filter">
+          <option value="">All</option>
+          <option value="2005">2005</option>
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Age Rating</label>
+        <select id="age-filter">
+          <option value="">All</option>
+          <option value="3+">3+</option>
+          <option value="7+">7+</option>
+          <option value="12+">12+</option>
+          <option value="15+">15+</option>
+          <option value="18+">18+</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Price Range</label>
+        <select id="price-filter">
+          <option value="">All</option>
+          <option value="0-20">$0 - $20</option>
+          <option value="20-50">$20 - $50</option>
+          <option value="50-100">$50 - $100</option>
+          <option value="100+">$100+</option>
+        </select>
+      </div>
+      <button class="filter-btn" id="apply-filters-btn">Apply Filters</button>
+    </aside>
+
+    <main class="game-display">
+      <div class="game-grid" id="games-container">
+
+      </div>
+    </main>
+  </div>
+</body>
+
 </html>

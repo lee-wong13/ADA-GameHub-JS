@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameHub | The Long Night</title>
+    <link rel="stylesheet" href="/css/styles.css" />
     <script type="module" src="/js/product.js"></script>
-    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="module" src="/js/cart.js"></script>
+    <script type="module" src="/js/script.js"></script>
   </head>
 
   <body>
@@ -16,17 +18,19 @@
         <li><a href="../games.html">Games</a></li>
       </ul>
 
-      <div class="nav-cart"><a href="../checkout/index.html">Cart (0)</a></div>
+      <div class="nav-cart">
+        <a href="../checkout/index.html">
+          Cart (<span id="cart-count">0</span>)
+        </a>
+      </div>
     </nav>
 
-    <!-- Comment for learning purpose -->
-
-    <main class="game-container">
+    <main class="product-container">
       <section id="game-detail">
-        <!-- <div class="game-visuals">
+        <!-- <div class="product-visuals">
         <div class="main-image"></div>
 
-        <div class="game-details">
+        <div class="product-details">
           <nav class="breadcrumb">Games &gt; RPG &gt; The Long Night</nav>
           <h1>The Long Night</h1>
           <p class="tagline">
@@ -48,7 +52,7 @@
             decision shapes your destiny.
           </p>
 
-          <button class="add-to-cart-btn">Add to Cart</button>
+          <button class="add-to-cart-btn" id="add-btn">Add to Cart</button>
           <p class="stock-status">In Stock</p>
         </div>
       </div> -->
