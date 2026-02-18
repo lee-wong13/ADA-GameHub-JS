@@ -2,7 +2,7 @@
 
 JavaScript Project
 
-## JS1 Course Assignment
+# JS1 Course Assignment
 
 # Goal
 
