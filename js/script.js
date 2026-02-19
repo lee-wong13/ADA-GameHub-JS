@@ -34,7 +34,7 @@ function displayGames(games) {
   games.forEach((games, index) => {
     const html = `
       <div class"game-card">
-        <a href="/product/index.html?id=${games.id}">
+        <a href="../product/index.html?id=${games.id}">
           <div class="game-img" style=" background: url(${games.image.url}) center center / cover no-repeat; " ></div>
         </a>
         <div class="game-info">
