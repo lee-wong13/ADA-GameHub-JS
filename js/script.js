@@ -7,7 +7,7 @@ const fallbackImage = "https://via.placeholder.com/300x170?text=No+Image";
 async function fetchGames() {
   updateCartCount();
 
-  const url = "https://v2.api.noroff.dev/gamehub";
+  const url = "https://v2.api.noroff.dev/online-shop";
 
   try {
     const response = await fetch(url);

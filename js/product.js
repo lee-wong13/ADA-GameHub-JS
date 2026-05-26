@@ -6,7 +6,7 @@ const detailContainer = document.getElementById("game-detail");
 async function fetchGames() {
   updateCartCount();
 
-  const url = "https://v2.api.noroff.dev/gamehub";
+  const url = "https://v2.api.noroff.dev/online-shop";
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
