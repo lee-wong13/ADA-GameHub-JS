@@ -44,8 +44,6 @@ If I were to continue developing this project, I would focus on:
 - Adding localStorage so the cart persists when the page is
   refreshed
 - Adding a checkout page with form validation
-- Improving the filter system with multiple filter options
-  such as genre, price range, and rating
 - Writing cleaner, more modular JavaScript by breaking
   functions into separate files
 - Adding loading states and error handling for API failures

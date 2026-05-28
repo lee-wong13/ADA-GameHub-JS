@@ -31,15 +31,16 @@ function displayGames(games) {
 
   gamesContainer.innerHTML = ""; // Clear previous content
 
-  games.forEach((games, index) => {
+  games.forEach((game, index) => {
+    const imageUrl = game.image?.url || fallbackImage;
     const html = `
-      <div class"game-card">
-        <a href="product/index.html?id=${games.id}">
-          <div class="game-img" style=" background: url(${games.image.url}) center center / cover no-repeat; " ></div>
+      <div class="game-card">
+        <a href="product/index.html?id=${game.id}">
+          <div class="game-img" style="background: url(${imageUrl}) center center / cover no-repeat;"></div>
         </a>
         <div class="game-info">
-          <h3>${games.title}</h3>
-          <p>$ ${games.price}</p>
+          <h3>${game.title}</h3>
+          <p>$ ${game.price}</p>
           <button class="buy-btn" data-index="${index}">Add to Cart</button>
         </div>
       </div>
@@ -47,14 +48,16 @@ function displayGames(games) {
     gamesContainer.insertAdjacentHTML("beforeend", html);
   });
 
-  gamesContainer.addEventListener("click", function (e) {
+  gamesContainer.onclick = function (e) {
     if (e.target.classList.contains("buy-btn")) {
-      const index = e.target.getAttribute("data-index");
+      const index = Number(e.target.getAttribute("data-index"));
       const selectedGame = games[index];
 
-      addToCart(selectedGame);
+      if (selectedGame) {
+        addToCart(selectedGame);
+      }
     }
-  });
+  };
 }
 
 // Filter functions
@@ -88,7 +91,8 @@ function setupFilters() {
       if (selectedGenre !== "" && game.genre !== selectedGenre) {
         return false;
       }
-      if (selectedRelease !== "" && game.released !== selectedRelease) {
+      const releaseYear = String(game.released || "").slice(0, 4);
+      if (selectedRelease !== "" && releaseYear !== selectedRelease) {
         return false;
       }
       if (selectedAge !== "" && game.ageRating !== selectedAge) {

@@ -5,7 +5,9 @@ const totalValue = document.getElementById("total-value");
 
 function init() {
   updateCartCount();
-  renderCart();
+  if (cartContainer && subTotalValue && taxValue && totalValue) {
+    renderCart();
+  }
 }
 
 function renderCart() {
@@ -69,7 +71,35 @@ function updateCartCount() {
   if (countElement) countElement.innerText = cart.length;
 }
 
+function initCheckoutInformation() {
+  const checkoutForm = document.getElementById("checkout-form");
+  if (!checkoutForm) return;
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const subtotal = cart.reduce((sum, item) => sum + Number(item.price || 0), 0);
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+
+  const itemCount = document.getElementById("item-count");
+  const subtotalElement = document.getElementById("subtotal");
+  const taxElement = document.getElementById("tax");
+  const totalElement = document.getElementById("total");
+
+  if (itemCount) itemCount.textContent = String(cart.length);
+  if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+  if (taxElement) taxElement.textContent = `$${tax.toFixed(2)}`;
+  if (totalElement) totalElement.textContent = `$${total.toFixed(2)}`;
+
+  checkoutForm.addEventListener("submit", (event) => {
+    if (cart.length === 0) {
+      event.preventDefault();
+      alert("Your cart is empty!");
+    }
+  });
+}
+
 init();
+initCheckoutInformation();
 
 document.getElementById("checkout-btn")?.addEventListener("click", () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -78,5 +108,5 @@ document.getElementById("checkout-btn")?.addEventListener("click", () => {
     return;
   }
 
-  window.location.href = "confirmation/index.html";
+  window.location.href = "checkout-information/index.html";
 });

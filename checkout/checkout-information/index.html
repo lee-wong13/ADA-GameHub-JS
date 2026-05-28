@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameHub | Checkout Information</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="../../js/cart.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">Game <span>Hub</span></div>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../games.html">Games</a></li>
+      </ul>
+
+      <div class="nav-cart">
+        <a href="../index.html">Cart (<span id="cart-count">0</span>)</a>
+      </div>
+    </nav>
+
+    <main class="checkout-wrapper">
+      <section class="form-card">
+        <h1>Checkout Information</h1>
+        <p class="subtitle">
+          Please fill in your details to complete your order.
+        </p>
+
+        <form
+          id="checkout-form"
+          class="checkout-form"
+          action="../confirmation/index.html"
+        >
+          <div class="form-row">
+            <label for="first-name">First Name</label>
+            <input id="first-name" name="firstName" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="last-name">Last Name</label>
+            <input id="last-name" name="lastName" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" required />
+          </div>
+
+          <div class="form-row">
+            <label for="address">Street Address</label>
+            <input id="address" name="address" type="text" required />
+          </div>
+
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" required />
+            </div>
+
+            <div class="form-row">
+              <label for="postal-code">Postal Code</label>
+              <input id="postal-code" name="postalCode" type="text" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text" required />
+          </div>
+
+          <button type="submit" class="confirm-btn">Confirm Purchase</button>
+        </form>
+      </section>
+
+      <aside class="summary-card">
+        <h2>Order Summary</h2>
+        <div class="summary-line">
+          <span>Items:</span>
+          <span id="item-count">0</span>
+        </div>
+        <div class="summary-line">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>Tax (10%):</span>
+          <span id="tax">$0.00</span>
+        </div>
+        <hr />
+        <div class="summary-line total">
+          <span>Total:</span>
+          <span id="total">$0.00</span>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
