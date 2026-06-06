@@ -37,16 +37,7 @@ as part of my frontend development studies at Noroff.
 
 ## Future Improvements
 
-If I were to continue developing this project, I would focus on:
-
-- Improving the visual design and UI to match a more polished
-  look and feel
-- Adding localStorage so the cart persists when the page is
-  refreshed
 - Adding a checkout page with form validation
-- Writing cleaner, more modular JavaScript by breaking
-  functions into separate files
-- Adding loading states and error handling for API failures
 
 ## Live website
 
